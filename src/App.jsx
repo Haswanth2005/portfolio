@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Lenis from '@studio-freight/lenis'
 import Navbar from './components/Navbar'
+import CursorFollower from './components/CursorFollower'
 import Hero from './sections/Hero'
 import Projects from './sections/Projects'
 import Experience from './sections/Experience'
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <div className="app">
+      <CursorFollower />
       <Navbar />
 
       <main>

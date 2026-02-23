@@ -1,10 +1,15 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import './Hero.css'
+import HeroAvatar from '../components/HeroAvatar'
 
 const Hero = () => {
     return (
         <section className="hero-section container">
+            <div className="hero-visual">
+                <HeroAvatar />
+            </div>
+
             <div className="hero-content">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -38,7 +43,6 @@ const Hero = () => {
                 </div>
             </div>
 
-            {/* Abstract Texture / Glow Background */}
             <div className="hero-glow" />
         </section>
     )
