@@ -1,0 +1,67 @@
+.cursor-dot-v2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+}
+
+.cursor-ring-v2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-text);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    opacity: 0.3;
+    transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover States */
+.cursor-ring-v2.hover {
+    background-color: rgba(61, 48, 37, 0.05);
+    /* Text color with very low opacity */
+    border-color: var(--color-text);
+    opacity: 0.8;
+}
+
+.cursor-ring-v2.orange {
+    background-color: var(--color-primary);
+    /* Coral/Orange */
+    border-color: var(--color-primary);
+    opacity: 0.9;
+    mix-blend-mode: difference;
+    /* Invert effect */
+}
+
+/* Hide default cursor on desktop */
+@media (hover: hover) and (pointer: fine) {
+    body {
+        cursor: none !important;
+    }
+
+    a,
+    button,
+    [data-cursor] {
+        cursor: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .cursor-dot-v2,
+    .cursor-ring-v2 {
+        display: none;
+    }
+
+    body {
+        cursor: auto !important;
+    }
+}
