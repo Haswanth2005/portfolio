@@ -17,8 +17,16 @@ const ScrollRevealText = ({ text, progress, startOffset, endOffset, className })
                 // eslint-disable-next-line react-hooks/rules-of-hooks
                 const opacity = useTransform(progress, [wordStart, wordEnd], [0.15, 1])
 
+                // Word glows coral while animating, settles to normal text color when done
+                // eslint-disable-next-line react-hooks/rules-of-hooks
+                const color = useTransform(
+                    progress,
+                    [Math.max(0, wordStart - 0.005), wordStart, wordEnd, Math.min(1, wordEnd + 0.005)],
+                    ['var(--color-text)', 'var(--color-primary)', 'var(--color-primary)', 'var(--color-text)']
+                )
+
                 return (
-                    <motion.span key={i} style={{ opacity }} className="word-span">
+                    <motion.span key={i} style={{ opacity, color }} className="word-span">
                         {word}{' '}
                     </motion.span>
                 )

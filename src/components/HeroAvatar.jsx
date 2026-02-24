@@ -69,8 +69,8 @@ const HeroAvatar = () => {
                     </filter>
                     {/* Brand Colors for accents */}
                     <linearGradient id="brandJacket" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#FFDE33" />
-                        <stop offset="100%" stopColor="#F5C71A" />
+                        <stop offset="0%" stopColor="#EF6D58" />
+                        <stop offset="100%" stopColor="#D85A46" />
                     </linearGradient>
                 </defs>
 
@@ -81,7 +81,7 @@ const HeroAvatar = () => {
                 {/* Let's use a brand-aligned blue/green mix if appropriate, but stick to reference image for "accuracy" */}
                 <motion.path
                     d="M120 400 Q 250 480 380 400 C 380 480, 120 480, 120 400"
-                    fill="#426CF5"
+                    fill="#DDB8A6"
                     style={{ y: useTransform(springY, [-100, 100], [-8, 8]) }}
                 />
 
@@ -132,19 +132,19 @@ const HeroAvatar = () => {
                 <motion.g style={{ x: useTransform(springX, [-100, 100], [-8, 8]), y: headY, rotate: headRotate, transformOrigin: "250px 180px" }}>
                     {/* Crown (Light Blue or Brand Secondary Green?) */}
                     {/* Let's stick to Blue for cap crown but use Brand Green #5D6D3E for the bill for unique brand touch */}
-                    <path d="M175 220 Q 175 120 250 120 Q 325 120 325 220 Z" fill="#90D4F5" />
-                    {/* Bill (Brand Secondary Green #5D6D3E) */}
-                    <path d="M175 200 Q 300 110 440 215 Q 360 250 250 225 Q 175 210 175 200" fill="#426CF5" />
+                    <path d="M175 220 Q 175 120 250 120 Q 325 120 325 220 Z" fill="#5D6D3E" />
+                    {/* Bill — Brand Dark Brown */}
+                    <path d="M175 200 Q 300 110 440 215 Q 360 250 250 225 Q 175 210 175 200" fill="#3D3025" />
                     <circle cx="250" cy="120" r="6" fill="white" fillOpacity="0.3" />
                 </motion.g>
 
                 {/* Jacket Detail Layer */}
                 <g>
                     {/* Pockets */}
-                    <rect x="120" y="450" width="60" height="60" rx="4" fill="#FFDE33" stroke="#F5C71A" strokeWidth="2" />
-                    {/* Pocket Detail (Brand Coral #EF6D58) */}
-                    <rect x="135" y="465" width="30" height="20" rx="2" fill="#EF6D58" fillOpacity="0.8" />
-                    <rect x="135" y="472" width="20" height="6" rx="1" fill="#FFDE33" />
+                    <rect x="120" y="450" width="60" height="60" rx="4" fill="#D85A46" stroke="#C44D3A" strokeWidth="2" />
+                    {/* Pocket Detail — muted */}
+                    <rect x="135" y="465" width="30" height="20" rx="2" fill="#DDB8A6" fillOpacity="0.9" />
+                    <rect x="135" y="472" width="20" height="6" rx="1" fill="#D85A46" />
 
                     {/* Buttons (Brand Dark Brown #3D3025) */}
                     <circle cx="250" cy="425" r="8" fill="#3D3025" />

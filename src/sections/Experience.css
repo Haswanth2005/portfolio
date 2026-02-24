@@ -1,5 +1,5 @@
 .experience-section {
-    border-top: 1px solid var(--color-muted);
+    position: relative;
 }
 
 .exp-grid {
@@ -64,7 +64,38 @@
     font-size: 1.125rem;
     line-height: 1.6;
     opacity: 0.8;
+    margin-bottom: 1.25rem;
 }
+
+.exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    border-left: 2px solid var(--color-muted);
+    padding-left: 1.25rem;
+    margin-top: 0.25rem;
+}
+
+.exp-bullet {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    opacity: 0.7;
+    position: relative;
+}
+
+.exp-bullet::before {
+    content: '';
+    position: absolute;
+    left: -1.45rem;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    opacity: 0.7;
+}
+
 
 @media (max-width: 1024px) {
     .exp-grid {
