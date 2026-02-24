@@ -18,11 +18,10 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 500px;
-    height: 500px;
+    width: clamp(280px, 35vw, 500px);
+    height: clamp(280px, 35vw, 500px);
     pointer-events: none;
     z-index: 100;
-    /* Ensure it stays on top */
     display: block !important;
 }
 
@@ -77,6 +76,13 @@
     pointer-events: none;
 }
 
+/* Mac laptop breakpoint */
+@media (max-width: 1280px) {
+    .hero-bottom {
+        margin-top: var(--space-lg);
+    }
+}
+
 @media (max-width: 768px) {
     .hero-content {
         display: flex;
@@ -91,8 +97,8 @@
         top: auto;
         transform: none;
         width: 100%;
-        max-width: 400px;
-        height: 300px;
+        max-width: 360px;
+        height: 280px;
         margin: 0 auto var(--space-lg);
         z-index: 5;
     }

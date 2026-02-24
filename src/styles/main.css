@@ -34,8 +34,8 @@ h4 {
 .container {
     max-width: 1440px;
     margin: 0 auto;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-left: clamp(2rem, 5vw, 4rem);
+    padding-right: clamp(2rem, 5vw, 4rem);
 }
 
 .section {
@@ -93,10 +93,17 @@ button {
     color: var(--color-primary);
 }
 
+/* Mac laptop / mid-range screens */
+@media (max-width: 1280px) {
+    .text-huge {
+        font-size: clamp(3.5rem, 12vw, 12rem);
+    }
+}
+
 @media (max-width: 768px) {
     .container {
-        padding-left: 2rem;
-        padding-right: 2rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 
     .footer-content {
