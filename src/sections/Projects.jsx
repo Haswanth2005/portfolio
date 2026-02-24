@@ -8,35 +8,40 @@ const projects = [
         category: 'SaaS Platform',
         metric: 'User Growth +30%',
         description: 'An editorial blogging platform with custom block-style editor and AWS S3 integration.',
-        color: '#DDB8A6'
+        color: '#DDB8A6',
+        image: '/thynk.png'
     },
     {
         title: 'AgriGlance',
         category: 'AI Dashboard',
         metric: '50% Faster Insight',
         description: 'Smart agriculture monitoring system using neural networks and real-time mapping.',
-        color: '#5D6D3E'
+        color: '#5D6D3E',
+        image: '/agriglance.png'
     },
     {
         title: 'Barrel Boost',
         category: 'Creative Tech',
         metric: 'Physics First',
         description: 'Experimental 3D game engine built with React and Three.js principles.',
-        color: '#EF6D58'
+        color: '#EF6D58',
+        image: '/barrelboost.png'
     },
     {
         title: 'Social Welfare',
         category: 'Web Application',
         metric: 'AI-Powered RAG',
         description: 'Full-stack social welfare platform with an n8n-powered RAG chatbot and automated data ingestion pipeline.',
-        color: '#8B9E6A'
+        color: '#8B9E6A',
+        image: '/socialwelfare.png'
     },
     {
         title: 'Portfolio 2.0',
         category: 'Design System',
         metric: 'Motion-First',
         description: 'This very portfolio — crafted with React, Framer Motion, and a custom scroll-driven animation system.',
-        color: '#C9A882'
+        color: '#C9A882',
+        image: '/portfolio.png'
     }
 ]
 
@@ -54,8 +59,9 @@ const Projects = () => {
     // Dynamically drive X based on row's actual width vs viewport
     useMotionValueEvent(scrollYProgress, 'change', (v) => {
         if (!rowRef.current) return
-        const padding = parseFloat(getComputedStyle(document.documentElement).fontSize) * 8 // ~container padding
-        const maxX = -(rowRef.current.scrollWidth - window.innerWidth + padding)
+        // End padding ensures the last card stops flush at the right edge
+        const endPadding = 64
+        const maxX = -(rowRef.current.scrollWidth - window.innerWidth + endPadding)
         x.set(v * maxX)
     })
 
@@ -90,7 +96,12 @@ const Projects = () => {
                             >
                                 <div
                                     className="project-image-wrapper"
-                                    style={{ backgroundColor: project.color }}
+                                    style={{
+                                        backgroundColor: project.color,
+                                        backgroundImage: project.image ? `url(${project.image})` : 'none',
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center top',
+                                    }}
                                 >
                                     <div className="project-metric text-mono">{project.metric}</div>
                                     {/* Project number watermark */}

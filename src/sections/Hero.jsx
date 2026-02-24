@@ -135,7 +135,7 @@ const Hero = () => {
 
                         <div className="hero-links">
                             <a
-                                href="https://github.com/haswanth"
+                                href="https://github.com/Haswanth2005"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hero-link text-mono"
@@ -143,7 +143,7 @@ const Hero = () => {
                                 GitHub ↗
                             </a>
                             <a
-                                href="https://linkedin.com/in/haswanth"
+                                href="https://www.linkedin.com/in/haswanth-m875/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hero-link text-mono"
