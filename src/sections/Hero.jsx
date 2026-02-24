@@ -1,10 +1,11 @@
-import React, { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import React, { useRef, useEffect } from 'react'
+import { motion, useMotionValue, useTransform } from 'framer-motion'
 import './Hero.css'
 import HeroAvatar from '../components/HeroAvatar'
 
-// Splits text into words and animates each word's opacity based on scroll progress
-const ScrollRevealText = ({ text, scrollYProgress, startOffset, endOffset, className }) => {
+// Splits text into words, animating each word's opacity from 0.15→1
+// based on a manually driven motionValue (0→1)
+const ScrollRevealText = ({ text, progress, startOffset, endOffset, className }) => {
     const words = text.split(' ')
 
     return (
@@ -14,14 +15,10 @@ const ScrollRevealText = ({ text, scrollYProgress, startOffset, endOffset, class
                 const wordEnd = startOffset + ((i + 1) / words.length) * (endOffset - startOffset)
 
                 // eslint-disable-next-line react-hooks/rules-of-hooks
-                const opacity = useTransform(scrollYProgress, [wordStart, wordEnd], [0.15, 1])
+                const opacity = useTransform(progress, [wordStart, wordEnd], [0.15, 1])
 
                 return (
-                    <motion.span
-                        key={i}
-                        style={{ opacity }}
-                        className="word-span"
-                    >
+                    <motion.span key={i} style={{ opacity }} className="word-span">
                         {word}{' '}
                     </motion.span>
                 )
@@ -31,15 +28,51 @@ const ScrollRevealText = ({ text, scrollYProgress, startOffset, endOffset, class
 }
 
 const Hero = () => {
-    const sectionRef = useRef(null)
+    // progress: 0 = start, 1 = all words revealed
+    const progress = useMotionValue(0)
+    const animDoneRef = useRef(false)
 
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ['start start', 'end start'],
-    })
+    useEffect(() => {
+        // Accumulate wheel input to drive animation (mimics ~3 full scrolls worth)
+        const TOTAL_DELTA = 2200
+        let accumulated = 0
+
+        // Stop Lenis so the page doesn't scroll while animation is playing
+        const stopLenis = () => window.lenis?.stop()
+        const startLenis = () => window.lenis?.start()
+
+        // Small delay to ensure Lenis is initialized
+        const timer = setTimeout(stopLenis, 100)
+
+        const onWheel = (e) => {
+            if (animDoneRef.current) return
+
+            // Prevent default page scroll while we drive the animation
+            e.preventDefault()
+
+            accumulated = Math.min(TOTAL_DELTA, Math.max(0, accumulated + e.deltaY))
+            const p = accumulated / TOTAL_DELTA
+            progress.set(p)
+
+            if (p >= 1) {
+                animDoneRef.current = true
+                // Resume Lenis so the page scrolls normally to the next section
+                startLenis()
+            }
+        }
+
+        window.addEventListener('wheel', onWheel, { passive: false })
+
+        return () => {
+            clearTimeout(timer)
+            window.removeEventListener('wheel', onWheel)
+            // Always restore Lenis on unmount
+            startLenis()
+        }
+    }, [progress])
 
     return (
-        <section ref={sectionRef} className="hero-section container">
+        <section className="hero-section container">
             <div className="hero-visual">
                 <HeroAvatar />
             </div>
@@ -68,19 +101,21 @@ const Hero = () => {
                             Full-Stack Developer &amp; UI Engineer
                         </p>
 
+                        {/* Para 1: 0%–55% of scroll */}
                         <ScrollRevealText
                             text="Hey, I'm Haswanth a developer who loves turning complex problems into clean, fast, and delightful digital products. I specialise in building end to end web applications with a strong eye for design and obsession with performance."
-                            scrollYProgress={scrollYProgress}
-                            startOffset={0.05}
-                            endOffset={0.45}
+                            progress={progress}
+                            startOffset={0.02}
+                            endOffset={0.55}
                             className="hero-bio"
                         />
 
+                        {/* Para 2: 55%–100% of scroll */}
                         <ScrollRevealText
                             text="Whether it's a sleek landing page or a fullscale SaaS platform, I bring precision and creativity to every line of code."
-                            scrollYProgress={scrollYProgress}
-                            startOffset={0.45}
-                            endOffset={0.75}
+                            progress={progress}
+                            startOffset={0.55}
+                            endOffset={1.0}
                             className="hero-bio"
                         />
 
