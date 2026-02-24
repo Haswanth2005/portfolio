@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="#3D3025"/>
+
+  <!-- Stylized H letterform -->
+  <!-- Left vertical bar -->
+  <rect x="26" y="28" width="14" height="64" rx="2" fill="#F2EEE8"/>
+  <!-- Right vertical bar -->
+  <rect x="80" y="28" width="14" height="64" rx="2" fill="#F2EEE8"/>
+  <!-- Horizontal crossbar -->
+  <rect x="26" y="53" width="68" height="14" rx="2" fill="#F2EEE8"/>
+
+  <!-- Coral accent dot -->
+  <circle cx="95" cy="92" r="9" fill="#EF6D58"/>
+</svg>

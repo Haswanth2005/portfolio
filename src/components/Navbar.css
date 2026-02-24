@@ -28,12 +28,20 @@
 }
 
 .nav-logo {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    letter-spacing: -0.05em;
-    font-size: 1.25rem;
-    color: var(--color-text);
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo-img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-logo-img:hover {
+    transform: scale(1.1);
+    opacity: 0.85;
 }
 
 .nav-info {

@@ -49,7 +49,7 @@ const Navbar = () => {
             <div className="navbar-container container">
                 <div className="nav-left">
                     <a href="#" className="nav-logo" onClick={(e) => handleScrollTo(e, 'top')}>
-                        HASWANTH<span className="text-coral">.</span>DEV
+                        <img src="/logo.svg" alt="Haswanth Logo" className="nav-logo-img" />
                     </a>
                     <div className="nav-info text-mono">
                         <span className="status-dot" />
