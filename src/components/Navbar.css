@@ -35,7 +35,7 @@
 .nav-logo-img {
     height: 40px;
     width: 40px;
-    border-radius: 50%;
+    border-radius: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
