@@ -1,14 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Lenis from '@studio-freight/lenis'
 import Navbar from './components/Navbar'
 import CursorFollower from './components/CursorFollower'
 import Hero from './sections/Hero'
 import Projects from './sections/Projects'
 import Experience from './sections/Experience'
+import Skills from './sections/Skills'
+import AboutMe from './sections/AboutMe'
 import Contact from './sections/Contact'
+import Resume from './pages/Resume'
+import Certificates from './pages/Certificates'
 import './styles/main.css'
 
 function App() {
+  const [route, setRoute] = useState(window.location.hash)
+
   useEffect(() => {
     const lenisInstance = new Lenis({
       duration: 1.2,
@@ -32,16 +38,34 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const onHash = () => setRoute(window.location.hash)
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
+
   return (
     <div className="app">
       <CursorFollower />
       <Navbar />
 
       <main>
-        <Hero />
-        <Projects />
-        <Experience />
-        <Contact />
+        {route === '#resume' ? (
+          <Resume />
+        ) : route === '#certificates' ? (
+          <Certificates />
+        ) : (
+          <>
+            <Hero />
+            <Projects />
+            <Experience />
+            <Skills />
+            <Resume />
+            <Certificates />
+            <AboutMe />
+            <Contact />
+          </>
+        )}
       </main>
 
       <footer className="container section footer">
@@ -51,6 +75,10 @@ function App() {
           <div className="footer-links text-mono">
             <a href="#work" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#work') }}>Work</a>
             <a href="#experience" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#experience') }}>Exp</a>
+            <a href="#skills" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#skills') }}>Skills</a>
+            <a href="#resume" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#resume') }}>Resume</a>
+            <a href="#certificates" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#certificates') }}>Certificates</a>
+            <a href="#about" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#about') }}>About</a>
             <a href="#contact" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#contact') }}>Talk</a>
           </div>
           <p className="text-mono" style={{ opacity: 0.5 }}>© 2026 Crafted with Precision</p>

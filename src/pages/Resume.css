@@ -1,0 +1,62 @@
+.resume-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+}
+
+.resume-header h2 {
+    font-size: clamp(2.8rem, 8vw, 6rem) !important;
+}
+
+.resume-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.resume-btn {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    padding: 0.45rem 0.85rem;
+    border-radius: 6px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    transition: var(--transition-fast);
+}
+
+.resume-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+.resume-btn.ghost {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid rgba(61, 48, 37, 0.25);
+}
+
+.resume-preview-wrap {
+    border: 1px solid rgba(61, 48, 37, 0.15);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(6px);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 85vh;
+}
+
+
+.inline-link {
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--color-primary);
+    margin-left: 0.35rem;
+}
+
+@media (max-width: 768px) {
+    .resume-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+}
