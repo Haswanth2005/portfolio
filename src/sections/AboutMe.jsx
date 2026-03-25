@@ -1,6 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Download, ExternalLink } from 'lucide-react'
 import './AboutMe.css'
+
+const pdfPath = '/12311988.pdf'
 
 const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -55,6 +58,18 @@ const AboutMe = () => {
                         contributing to open-source projects, or diving into competitive
                         programming challenges.
                     </motion.p>
+
+                    {/* Resume buttons */}
+                    <motion.div className="about-resume-actions" variants={fadeUp} custom={3}>
+                        <a className="resume-btn" href={pdfPath} download>
+                            <Download size={18} />
+                            Download Resume
+                        </a>
+                        <a className="resume-btn ghost" href={pdfPath} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink size={18} />
+                            View Resume
+                        </a>
+                    </motion.div>
                 </motion.div>
 
                 {/* Right – photo */}

@@ -1,0 +1,218 @@
+/* ── Certificates Section ─────────────────────────────────────────── */
+.certs-section {
+    position: relative;
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+}
+
+/* ── Header ──────────────────────────────────────────────────────── */
+.certs-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.certs-header .text-huge {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 0.9;
+}
+
+/* ── Grid: Images Left + Content Right ───────────────────────────── */
+.cert-testimonial-grid {
+    display: grid;
+    gap: 5rem;
+}
+
+@media (min-width: 768px) {
+    .cert-testimonial-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ── 3D Perspective Image Container ──────────────────────────────── */
+.cert-image-container {
+    position: relative;
+    width: 100%;
+    height: 24rem;
+    perspective: 1000px;
+    margin-top: 4rem;
+    /* Space for cards that stick up */
+}
+
+/* Each card in the perspective stack */
+.cert-perspective-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    will-change: transform, opacity;
+    overflow: hidden;
+}
+
+.cert-perspective-initials {
+    font-size: 5rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.05em;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.cert-perspective-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+/* ── Right: Content Side ─────────────────────────────────────────── */
+.cert-testimonial-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+.cert-t-title {
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin-bottom: 0.35rem;
+}
+
+.cert-t-issuer {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    opacity: 0.45;
+    margin-bottom: 1.5rem;
+}
+
+.cert-t-desc {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-text);
+    opacity: 0.6;
+}
+
+/* ── Arrow Buttons ───────────────────────────────────────────────── */
+.cert-arrow-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 2rem;
+    margin-top: 1.5rem;
+}
+
+.cert-view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 8px;
+    background: var(--color-primary);
+    color: var(--color-bg);
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.cert-view-btn:hover {
+    background: var(--color-text);
+    transform: translateY(-2px);
+}
+
+.cert-nav-arrows {
+    display: flex;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .cert-arrow-buttons {
+        padding-top: 0;
+    }
+}
+
+.cert-arrow-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cert-arrow-btn:hover {
+    transform: scale(1.08);
+}
+
+.cert-arrow-btn:active {
+    transform: scale(0.95);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+    .certs-section {
+        padding-top: var(--space-lg);
+        padding-bottom: var(--space-lg);
+    }
+
+    .certs-header {
+        margin-bottom: var(--space-md);
+    }
+
+    .cert-image-container {
+        height: 16rem;
+        margin-top: 2rem;
+    }
+
+    .cert-perspective-initials {
+        font-size: 3rem;
+    }
+
+    .cert-testimonial-grid {
+        gap: 1.5rem;
+    }
+
+    .cert-testimonial-content {
+        text-align: center;
+        align-items: center;
+        padding-top: 0;
+    }
+
+    .cert-t-issuer {
+        margin-bottom: 1rem;
+    }
+
+    .cert-t-desc {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .cert-arrow-buttons {
+        align-items: center;
+        padding-top: 1.5rem;
+    }
+
+    .cert-view-btn {
+        width: 100%;
+    }
+
+    .cert-nav-arrows {
+        justify-content: center;
+    }
+}

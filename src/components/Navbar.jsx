@@ -25,7 +25,6 @@ const Navbar = () => {
         { name: 'Work', href: '#work' },
         { name: 'Exp', href: '#experience' },
         { name: 'Skills', href: '#skills' },
-        { name: 'Resume', href: '#resume' },
         { name: 'Certs', href: '#certificates' },
         { name: 'About', href: '#about' },
         { name: 'Talk', href: '#contact' }
@@ -41,10 +40,6 @@ const Navbar = () => {
 
     const handleScrollTo = (e, id) => {
         e.preventDefault()
-        if (id === '#resume' || id === '#certificates') {
-            window.location.hash = id
-            return
-        }
         if (window.lenis) {
             window.lenis.scrollTo(id)
         } else {

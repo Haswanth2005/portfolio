@@ -35,7 +35,7 @@ const ScrollRevealText = ({ text, progress, startOffset, endOffset, className })
     )
 }
 
-const Hero = () => {
+const Hero = ({ isRevealed }) => {
     // progress: 0 = start, 1 = all words revealed
     const progress = useMotionValue(0)
     const animDoneRef = useRef(false)
@@ -82,14 +82,20 @@ const Hero = () => {
     return (
         <section className="hero-section container">
             <div className="hero-visual">
-                <HeroAvatar />
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={isRevealed ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                >
+                    <HeroAvatar />
+                </motion.div>
             </div>
 
             <div className="hero-content">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
                     className="hero-title-wrapper"
                 >
                     <h1 className="text-huge">
@@ -100,8 +106,8 @@ const Hero = () => {
                 <div className="hero-bottom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5, duration: 0.9 }}
+                        animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                        transition={{ delay: 0.5, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                         className="hero-about"
                     >
                         <p className="text-mono hero-role">
@@ -155,8 +161,8 @@ const Hero = () => {
 
                     <motion.div
                         initial={{ height: 0 }}
-                        animate={{ height: '100px' }}
-                        transition={{ delay: 0.8, duration: 1 }}
+                        animate={isRevealed ? { height: '100px' } : { height: 0 }}
+                        transition={{ delay: 0.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="scroll-indicator"
                     />
                 </div>

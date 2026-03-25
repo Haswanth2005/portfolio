@@ -1,5 +1,6 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { motion, useScroll, useMotionValue, useMotionValueEvent } from 'framer-motion'
+import ProjectModal from '../components/ProjectModal'
 import './Projects.css'
 
 const projects = [
@@ -9,7 +10,8 @@ const projects = [
         metric: 'User Growth +30%',
         description: 'An editorial blogging platform with custom block-style editor and AWS S3 integration.',
         color: '#DDB8A6',
-        image: '/thynk.png'
+        image: '/thynk.png',
+        gallery: ['/thynk.png', '/thynk.png', '/thynk.png', '/thynk.png']
     },
     {
         title: 'AgriGlance',
@@ -17,7 +19,8 @@ const projects = [
         metric: '50% Faster Insight',
         description: 'Smart agriculture monitoring system using neural networks and real-time mapping.',
         color: '#5D6D3E',
-        image: '/agriglance.png'
+        image: '/agriglance.png',
+        gallery: ['/agriglance.png', '/agriglance.png', '/agriglance.png', '/agriglance.png']
     },
     {
         title: 'Barrel Boost',
@@ -25,7 +28,8 @@ const projects = [
         metric: 'Physics First',
         description: 'Experimental 3D game engine built with React and Three.js principles.',
         color: '#EF6D58',
-        image: '/barrelboost.png'
+        image: '/barrelboost.png',
+        gallery: ['/barrelboost.png', '/barrelboost.png', '/barrelboost.png', '/barrelboost.png']
     },
     {
         title: 'Social Welfare',
@@ -33,7 +37,8 @@ const projects = [
         metric: 'AI-Powered RAG',
         description: 'Full-stack social welfare platform with an n8n-powered RAG chatbot and automated data ingestion pipeline.',
         color: '#8B9E6A',
-        image: '/socialwelfare.png'
+        image: '/socialwelfare.png',
+        gallery: ['/socialwelfare.png', '/socialwelfare.png', '/socialwelfare.png', '/socialwelfare.png']
     },
     {
         title: 'Portfolio 2.0',
@@ -41,7 +46,8 @@ const projects = [
         metric: 'Motion-First',
         description: 'This very portfolio — crafted with React, Framer Motion, and a custom scroll-driven animation system.',
         color: '#C9A882',
-        image: '/portfolio.png'
+        image: '/portfolio.png',
+        gallery: ['/portfolio.png', '/portfolio.png', '/portfolio.png', '/portfolio.png']
     }
 ]
 
@@ -49,6 +55,9 @@ const Projects = () => {
     const wrapperRef = useRef(null)
     const rowRef = useRef(null)
     const x = useMotionValue(0)
+    
+    // State for the modal
+    const [selectedProject, setSelectedProject] = useState(null)
 
     // Track scroll through the tall wrapper
     const { scrollYProgress } = useScroll({
@@ -93,6 +102,7 @@ const Projects = () => {
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.05 }}
                                 className="project-card"
+                                onClick={() => setSelectedProject(project)}
                             >
                                 <div
                                     className="project-image-wrapper"
@@ -112,7 +122,7 @@ const Projects = () => {
                                     <p className="text-mono project-category">{project.category}</p>
                                     <h3 className="project-title">{project.title}</h3>
                                     <p className="project-desc">{project.description}</p>
-                                    <a href="#" className="view-project-link text-mono">View Project ↗</a>
+                                    <span className="view-project-link text-mono">View Project ↗</span>
                                 </div>
                             </motion.div>
                         ))}
@@ -127,6 +137,13 @@ const Projects = () => {
                     />
                 </div>
             </section>
+
+            {/* Project Details Modal */}
+            <ProjectModal 
+                project={selectedProject} 
+                isOpen={!!selectedProject} 
+                onClose={() => setSelectedProject(null)} 
+            />
         </div>
     )
 }

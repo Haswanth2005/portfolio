@@ -2,97 +2,71 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import './Skills.css'
 
-const skillGroups = [
-  {
-    title: 'Frontend',
-    items: ['React', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Framer'],
-  },
-  {
-    title: 'Backend',
-    items: ['Node.js', 'Express', 'MongoDB', 'MySQL', 'JWT'],
-  },
-  {
-    title: 'Tools',
-    items: ['Git', 'Vite', 'Figma', 'AWS', 'Postman'],
-  },
-  {
-    title: 'Other',
-    items: ['Unity', 'C#', 'Three.js', 'Rive'],
-  },
+const skills = [
+  { name: 'React', slug: 'react' },
+  { name: 'JavaScript', slug: 'javascript' },
+  { name: 'TypeScript', slug: 'typescript' },
+  { name: 'Next.js', slug: 'nextdotjs' },
+  { name: 'HTML5', slug: 'html5' },
+  { name: 'CSS3', slug: 'css3' },
+  { name: 'Tailwind', slug: 'tailwindcss' },
+  { name: 'Node.js', slug: 'nodedotjs' },
+  { name: 'Express', slug: 'express' },
+  { name: 'MongoDB', slug: 'mongodb' },
+  { name: 'MySQL', slug: 'mysql' },
+  { name: 'Git', slug: 'git' },
+  { name: 'Figma', slug: 'figma' },
+  { name: 'Vite', slug: 'vite' },
+  { name: 'AWS', slug: 'amazonaws' },
+  { name: 'Postman', slug: 'postman' },
+  { name: 'Three.js', slug: 'threedotjs' },
+  { name: 'Framer', slug: 'framer' },
+  { name: 'Unity', slug: 'unity' },
+  { name: 'C#', slug: 'csharp' },
 ]
 
-const simpleIconUrl = (slug) =>
+const iconUrl = (slug) =>
   `https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${slug}.svg`
 
-const logoByName = (name) => {
-  const map = {
-    'React': 'react',
-    'JavaScript': 'javascript',
-    'TypeScript': 'typescript',
-    'HTML5': 'html5',
-    'CSS3': 'css3',
-    'Framer': 'framer',
-    'Node.js': 'nodedotjs',
-    'Express': 'express',
-    'MongoDB': 'mongodb',
-    'MySQL': 'mysql',
-    'JWT': 'jsonwebtokens',
-    'Git': 'git',
-    'Vite': 'vite',
-    'Figma': 'figma',
-    'AWS': 'amazonaws',
-    'Postman': 'postman',
-    'Unity': 'unity',
-    'C#': 'csharp',
-    'Three.js': 'threedotjs',
-    'Rive': 'rive',
-  }
-  const slug = map[name]
-  return slug ? simpleIconUrl(slug) : null
-}
+const SkillTile = ({ name, slug }) => (
+  <div className="skill-tile">
+    <div className="skill-tile__icon-wrap">
+      <img
+        src={iconUrl(slug)}
+        alt={`${name} logo`}
+        className="skill-tile__icon"
+        loading="lazy"
+      />
+    </div>
+    <span className="skill-tile__label text-mono">{name}</span>
+  </div>
+)
 
 const Skills = () => {
   return (
-    <section id="skills" className="skills-section container section">
-      <header className="skills-header">
-        <h2 className="text-huge">
-          SKILLS<span className="text-coral">.</span>
-        </h2>
-        <div className="line-divider" />
-      </header>
+    <section id="skills" className="skills-section">
+      <div className="container">
+        <motion.header
+          className="skills-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-huge">
+            SKILLS<span className="text-coral">.</span>
+          </h2>
+          <div className="line-divider" />
+        </motion.header>
 
-      <div className="skills-grid">
-        {skillGroups.map((group, i) => (
-          <motion.div
-            key={group.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.05 }}
-            className="skill-card"
-          >
-            <h3 className="skill-card-title text-mono">{group.title}</h3>
-            <div className="skill-logo-grid">
-              {group.items.map((item) => {
-                const url = logoByName(item)
-                return url ? (
-                  <img
-                    key={item}
-                    src={url}
-                    alt={`${item} logo`}
-                    title={item}
-                    className="skill-logo"
-                    loading="lazy"
-                  />
-                ) : (
-                  <span key={item} className="skill-chip text-mono">
-                    {item}
-                  </span>
-                )
-              })}
-            </div>
-          </motion.div>
-        ))}
+        {/* Carousel — contained within container width */}
+        <div className="skills-carousel">
+          <div className="skills-track">
+            {/* Render skills list twice for seamless loop */}
+            {[...skills, ...skills].map((skill, i) => (
+              <SkillTile key={`${skill.slug}-${i}`} {...skill} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
