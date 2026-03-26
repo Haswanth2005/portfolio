@@ -1,9 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ArrowUpRight } from 'lucide-react'
 import './ProjectModal.css'
 
 export default function ProjectModal({ project, isOpen, onClose }) {
+  const [mainImage, setMainImage] = useState(null)
+
+  useEffect(() => {
+    if (project && isOpen) {
+      setMainImage(project.gallery && project.gallery.length > 0 ? project.gallery[0] : project.image)
+    }
+  }, [project, isOpen])
+
   // Lock body scroll (and Lenis) when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -67,9 +75,13 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
-                {(project.gallery && project.gallery.length > 0) || project.image ? (
-                  <img 
-                    src={project.gallery ? project.gallery[0] : project.image} 
+                {mainImage ? (
+                  <motion.img 
+                    key={mainImage}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    src={mainImage} 
                     alt={`${project.title} master shot`} 
                     className="project-modal-main-image" 
                   />
@@ -78,16 +90,18 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                 )}
               </motion.div>
 
-              {/* Thumbnails Row (3 images) */}
+              {/* Thumbnails Row */}
               {project.gallery && project.gallery.length > 1 && (
                 <div className="project-modal-thumbnails">
-                  {project.gallery.slice(1, 4).map((img, i) => (
+                  {project.gallery.filter(img => img !== mainImage).slice(0, 3).map((img, i) => (
                     <motion.div
-                      key={`thumb-${i}`}
+                      key={`thumb-${img}-${i}`}
                       className="project-modal-thumb-wrap"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 + (i * 0.1), duration: 0.4 }}
+                      onClick={(e) => { e.stopPropagation(); setMainImage(img); }}
+                      style={{ cursor: 'pointer' }}
                     >
                       <img src={img} alt={`Thumbnail ${i}`} className="project-modal-thumb" />
                     </motion.div>
@@ -131,9 +145,15 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.4 }}
               >
-                <a href="#" className="project-modal-link text-mono" onClick={(e) => e.preventDefault()}>
-                  VIEW LIVE PROJECT <ArrowUpRight size={18} />
-                </a>
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-modal-link text-mono">
+                    VIEW LIVE PROJECT <ArrowUpRight size={18} />
+                  </a>
+                ) : (
+                  <a href="#" className="project-modal-link text-mono" onClick={(e) => e.preventDefault()}>
+                    COMING SOON <ArrowUpRight size={18} />
+                  </a>
+                )}
               </motion.div>
 
             </div>

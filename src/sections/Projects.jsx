@@ -10,44 +10,38 @@ const projects = [
         metric: 'User Growth +30%',
         description: 'An editorial blogging platform with custom block-style editor and AWS S3 integration.',
         color: '#DDB8A6',
-        image: '/thynk.png',
-        gallery: ['/thynk.png', '/thynk.png', '/thynk.png', '/thynk.png']
+        image: '/projects/thynk1.png',
+        gallery: ['/projects/thynk1.png', '/projects/thynk2.png', '/projects/thynk3.png'],
+        link: 'https://github.com/Haswanth2005/Thynk'
     },
     {
-        title: 'AgriGlance',
-        category: 'AI Dashboard',
-        metric: '50% Faster Insight',
-        description: 'Smart agriculture monitoring system using neural networks and real-time mapping.',
-        color: '#5D6D3E',
-        image: '/agriglance.png',
-        gallery: ['/agriglance.png', '/agriglance.png', '/agriglance.png', '/agriglance.png']
+        title: 'Treble',
+        category: 'Music Tool',
+        metric: 'Cross-Platform',
+        description: 'Convert playlists between Spotify, YouTube Music, Apple Music, Amazon Music, Tidal & Deezer in seconds.',
+        color: '#1DB954',
+        image: '/projects/treble1.png',
+        gallery: ['/projects/treble1.png', '/projects/treble2.png', '/projects/treble3.png'],
+        link: 'https://github.com/Haswanth2005/treble'
     },
     {
-        title: 'Barrel Boost',
+        title: 'Gameland',
         category: 'Creative Tech',
         metric: 'Physics First',
         description: 'Experimental 3D game engine built with React and Three.js principles.',
         color: '#EF6D58',
-        image: '/barrelboost.png',
-        gallery: ['/barrelboost.png', '/barrelboost.png', '/barrelboost.png', '/barrelboost.png']
+        image: '/projects/barrelboost1.png',
+        gallery: ['/projects/barrelboost1.png', '/projects/barrelboost2.png', '/projects/barrelboost3.png'],
+        link: 'https://github.com/GanjaSiddiGanesh/gameland'
     },
     {
-        title: 'Social Welfare',
+        title: 'AI Resume Builder',
         category: 'Web Application',
-        metric: 'AI-Powered RAG',
-        description: 'Full-stack social welfare platform with an n8n-powered RAG chatbot and automated data ingestion pipeline.',
-        color: '#8B9E6A',
-        image: '/socialwelfare.png',
-        gallery: ['/socialwelfare.png', '/socialwelfare.png', '/socialwelfare.png', '/socialwelfare.png']
-    },
-    {
-        title: 'Portfolio 2.0',
-        category: 'Design System',
-        metric: 'Motion-First',
-        description: 'This very portfolio — crafted with React, Framer Motion, and a custom scroll-driven animation system.',
-        color: '#C9A882',
-        image: '/portfolio.png',
-        gallery: ['/portfolio.png', '/portfolio.png', '/portfolio.png', '/portfolio.png']
+        metric: 'AI-Powered',
+        description: 'An AI-powered application that helps users generate and format professional resumes.',
+        color: '#8A7BBF',
+        image: '/projects/airesumebuilder1.png',
+        gallery: ['/projects/airesumebuilder1.png', '/projects/airesumebuilder2.png', '/projects/airesumebuilder3.png']
     }
 ]
 
@@ -55,7 +49,7 @@ const Projects = () => {
     const wrapperRef = useRef(null)
     const rowRef = useRef(null)
     const x = useMotionValue(0)
-    
+
     // State for the modal
     const [selectedProject, setSelectedProject] = useState(null)
 
@@ -139,10 +133,10 @@ const Projects = () => {
             </section>
 
             {/* Project Details Modal */}
-            <ProjectModal 
-                project={selectedProject} 
-                isOpen={!!selectedProject} 
-                onClose={() => setSelectedProject(null)} 
+            <ProjectModal
+                project={selectedProject}
+                isOpen={!!selectedProject}
+                onClose={() => setSelectedProject(null)}
             />
         </div>
     )

@@ -17,16 +17,16 @@ const experiences = [
         ]
     },
     {
-        role: 'Frontend Architect',
-        company: 'AgriGlance',
-        period: 'Feb 2025',
-        details: 'Built AI-powered monitoring dashboards, optimizing UI performance and cutting load times by 50%.',
+        role: 'Full-Stack Developer',
+        company: 'Treble',
+        period: 'Mar 2026',
+        details: 'Built a music playlist conversion tool enabling seamless transfers between major streaming platforms.',
         bullets: [
-            'Architected a real-time sensor data dashboard consuming live MQTT streams and visualized with Chart.js and Mapbox GL.',
-            'Integrated a neural-network crop disease classifier, surfacing model predictions with confidence scores in the UI.',
-            'Reduced dashboard load time by 50% via virtualized list rendering, memoization, and aggressive API response caching.',
-            'Established a component design system with 30+ reusable React components, cutting new feature development time by 35%.',
-            'Led accessibility audit bringing the app to WCAG 2.1 AA compliance across all major screen readers.'
+            'Engineered integrations with 6 major streaming APIs (Spotify, YouTube Music, Apple Music, Amazon Music, Tidal, Deezer) using OAuth 2.0.',
+            'Implemented a fuzzy matching algorithm with 95% accuracy to map songs across platforms despite metadata inconsistencies.',
+            'Built a queue management system processing 10,000+ song transfers with rate limiting and automatic retry logic.',
+            'Designed a responsive React interface with real-time progress tracking and error handling for failed conversions.',
+            'Optimized API calls and caching strategy, reducing average playlist conversion time from 5 minutes to under 30 seconds.'
         ]
     },
     {

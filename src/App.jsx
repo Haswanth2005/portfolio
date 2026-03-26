@@ -10,6 +10,7 @@ import Skills from './sections/Skills'
 import AboutMe from './sections/AboutMe'
 import Contact from './sections/Contact'
 import Certificates from './pages/Certificates'
+import Achievements from './pages/Achievements'
 import './styles/main.css'
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
         <Experience />
         <Skills />
         <Certificates />
+        <Achievements />
         <Contact />
       </main>
 
@@ -67,6 +69,7 @@ function App() {
             <a href="#experience" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#experience') }}>Exp</a>
             <a href="#skills" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#skills') }}>Skills</a>
             <a href="#certificates" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#certificates') }}>Certificates</a>
+            <a href="#achievements" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#achievements') }}>Achievements</a>
             <a href="#about" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#about') }}>About</a>
             <a href="#contact" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo('#contact') }}>Talk</a>
           </div>
