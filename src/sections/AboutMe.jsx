@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Download, ExternalLink } from 'lucide-react'
+import { Download, ExternalLink, GraduationCap } from 'lucide-react'
 import './AboutMe.css'
 
 const pdfPath = '/12311988.pdf'
@@ -110,6 +110,53 @@ const AboutMe = () => {
                     <p className="stat-number">∞</p>
                     <p className="stat-label text-mono">Curiosity</p>
                 </motion.div>
+            </motion.div>
+
+            {/* Education */}
+            <motion.div
+                className="about-education"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-50px' }}
+            >
+                <motion.p className="section-label text-mono" variants={fadeUp}>
+                    Education
+                </motion.p>
+                <div className="education-list">
+                    <motion.div className="education-card" variants={fadeUp} custom={1}>
+                        <div className="education-icon">
+                            <GraduationCap size={28} />
+                        </div>
+                        <div className="education-details">
+                            <h3 className="education-degree">B.Tech in Computer Science & Engineering</h3>
+                            <p className="education-school">Lovely Professional University, Phagwara, Punjab</p>
+                            <p className="education-info text-mono">CGPA: 7.9</p>
+                            <p className="education-period text-mono">Aug 2023 – Present</p>
+                        </div>
+                    </motion.div>
+                    <motion.div className="education-card" variants={fadeUp} custom={2}>
+                        <div className="education-icon">
+                            <GraduationCap size={28} />
+                        </div>
+                        <div className="education-details">
+                            <h3 className="education-degree">Intermediate</h3>
+                            <p className="education-school">Sri Chaitanya College, Hyderabad, Telangana</p>
+                            <p className="education-info text-mono">Percentage: 92%</p>
+                            <p className="education-period text-mono">Apr 2021 – May 2023</p>
+                        </div>
+                    </motion.div>
+                    <motion.div className="education-card" variants={fadeUp} custom={3}>
+                        <div className="education-icon">
+                            <GraduationCap size={28} />
+                        </div>
+                        <div className="education-details">
+                            <h3 className="education-degree">10th</h3>
+                            <p className="education-school">Vidyanjali High School, Hyderabad, Telangana</p>
+                            <p className="education-info text-mono">Percentage: 76%</p>
+                            <p className="education-period text-mono">Jun 2020 – Mar 2021</p>
+                        </div>
+                    </motion.div>
+                </div>
             </motion.div>
 
             {/* Interests */}

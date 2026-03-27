@@ -119,6 +119,87 @@
     margin-top: var(--space-lg);
 }
 
+/* Education */
+.about-education {
+    margin-top: var(--space-lg);
+}
+
+.about-education .section-label {
+    margin-bottom: var(--space-md);
+}
+
+.education-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+}
+
+.education-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-sm);
+    padding: var(--space-lg) var(--space-md);
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    border: 1px solid rgba(221, 184, 166, 0.2);
+    transition: var(--transition-fast);
+}
+
+.education-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(239, 109, 88, 0.1);
+}
+
+.education-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.education-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.education-degree {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.education-school {
+    font-size: 0.95rem;
+    opacity: 0.75;
+    margin: 0;
+}
+
+.education-info {
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    margin: 0;
+    margin-top: 0.25rem;
+}
+
+.education-period {
+    font-size: 0.75rem;
+    opacity: 0.55;
+    margin: 0;
+    margin-top: 0.25rem;
+}
+
 .about-interests .section-label {
     margin-bottom: var(--space-md);
 }
@@ -197,10 +278,28 @@
     .about-stats {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .education-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
     .about-stats {
         grid-template-columns: 1fr;
+    }
+
+    .education-list {
+        grid-template-columns: 1fr;
+    }
+
+    .education-card {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-md);
+    }
+
+    .education-degree {
+        font-size: 1rem;
     }
 }
